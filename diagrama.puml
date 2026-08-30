@@ -1,0 +1,146 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Direccion {
+    - calle : String
+    - carrera : String
+    - barrio : String
+    --
+    + Direccion(calle: String, carrera: String, barrio: String)
+    + getCalle() : String
+    + setCalle(calle: String) : void
+    + getCarrera() : String
+    + setCarrera(carrera: String) : void
+    + getBarrio() : String
+    + setBarrio(barrio: String) : void
+}
+
+class Usuario {
+    # idUsuario : String
+    # nombre : String
+    # apellido : String
+    # telefono : String
+    # correoElectronico : String
+    # direccion : Direccion
+    --
+    + Usuario(idUsuario: String, nombre: String, apellido: String, telefono: String, correoElectronico: String, direccion: Direccion)
+    + getIdUsuario() : String
+    + setIdUsuario(idUsuario: String) : void
+    + getNombre() : String
+    + setNombre(nombre: String) : void
+    + getApellido() : String
+    + setApellido(apellido: String) : void
+    + getTelefono() : String
+    + setTelefono(telefono: String) : void
+    + getCorreoElectronico() : String
+    + setCorreoElectronico(correoElectronico: String) : void
+    + getDireccion() : Direccion
+    + setDireccion(direccion: Direccion) : void
+}
+
+class UsuarioConPrestamos {
+    - prestamos : List<Prestamo>
+    --
+    + UsuarioConPrestamos(idUsuario: String, nombre: String, apellido: String, telefono: String, correoElectronico: String, direccion: Direccion)
+    + agregarPrestamo(prestamo: Prestamo) : void
+    + removerPrestamo(prestamo: Prestamo) : void
+    + getPrestamos() : List<Prestamo>
+}
+
+class Bibliotecario {
+    - idEmpleado : String
+    - turnoTrabajo : String
+    --
+    + Bibliotecario(idUsuario: String, nombre: String, apellido: String, telefono: String, correoElectronico: String, direccion: Direccion, idEmpleado: String, turnoTrabajo: String)
+    + getIdEmpleado() : String
+    + setIdEmpleado(idEmpleado: String) : void
+    + getTurnoTrabajo() : String
+    + setTurnoTrabajo(turnoTrabajo: String) : void
+}
+
+class Autor {
+    - idAutor : String
+    - nombre : String
+    - nacionalidad : String
+    --
+    + Autor(idAutor: String, nombre: String, nacionalidad: String)
+    + getIdAutor() : String
+    + setIdAutor(idAutor: String) : void
+    + getNombre() : String
+    + setNombre(nombre: String) : void
+    + getNacionalidad() : String
+    + setNacionalidad(nacionalidad: String) : void
+}
+
+class Libro {
+    # idLibro : String
+    # titulo : String
+    # autor : Autor
+    # disponible : boolean
+    # generoLiterario : String
+    --
+    + Libro(idLibro: String, titulo: String, autor: Autor, disponible: boolean, generoLiterario: String)
+    + getIdLibro() : String
+    + setIdLibro(idLibro: String) : void
+    + getTitulo() : String
+    + setTitulo(titulo: String) : void
+    + getAutor() : Autor
+    + setAutor(autor: Autor) : void
+    + isDisponible() : boolean
+    + setDisponible(disponible: boolean) : void
+    + getGeneroLiterario() : String
+    + setGeneroLiterario(generoLiterario: String) : void
+    + obtenerInstruccionesAcceso() : String
+}
+
+class LibroDigital {
+    - tamanoArchivoMB : double
+    - formato : String
+    --
+    + LibroDigital(idLibro: String, titulo: String, autor: Autor, disponible: boolean, generoLiterario: String, tamanoArchivoMB: double, formato: String)
+    + getTamanoArchivoMB() : double
+    + setTamanoArchivoMB(tamanoArchivoMB: double) : void
+    + getFormato() : String
+    + setFormato(formato: String) : void
+    + obtenerInstruccionesAcceso() : String
+}
+
+class LibroFisico {
+    - numeroEstante : String
+    --
+    + LibroFisico(idLibro: String, titulo: String, autor: Autor, disponible: boolean, generoLiterario: String, numeroEstante: String)
+    + getNumeroEstante() : String
+    + setNumeroEstante(numeroEstante: String) : void
+    + obtenerInstruccionesAcceso() : String
+}
+
+class Prestamo {
+    - fechaPrestamo : String
+    - fechaDevolucion : String
+    - libro : Libro
+    - bibliotecario : Bibliotecario
+    --
+    + Prestamo(fechaPrestamo: String, fechaDevolucion: String, libro: Libro, bibliotecario: Bibliotecario)
+    + getFechaPrestamo() : String
+    + setFechaPrestamo(fechaPrestamo: String) : void
+    + getFechaDevolucion() : String
+    + setFechaDevolucion(fechaDevolucion: String) : void
+    + getLibro() : Libro
+    + setLibro(libro: Libro) : void
+    + getBibliotecario() : Bibliotecario
+    + setBibliotecario(bibliotecario: Bibliotecario) : void
+}
+
+Usuario <|-- UsuarioConPrestamos
+Usuario <|-- Bibliotecario
+Libro <|-- LibroDigital
+Libro <|-- LibroFisico
+
+Usuario "1" *-- "1" Direccion : se compone de
+Prestamo "1" *-- "1" Libro : contiene
+
+Autor "1" o-- "0..*" Libro : escribe
+UsuarioConPrestamos "1" o-- "0..*" Prestamo : tiene asignados
+
+Prestamo "0..*" --> "1" Bibliotecario : es registrado por
+@enduml
