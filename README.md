@@ -1,9 +1,8 @@
 # Sistema de Biblioteca — Diagrama de clases (Actividad 1)
-
 Un diagrama de clases UML constituye el modelo estructural de un sistema informático. Describe de forma rigurosa la anatomía del software al detallar sus clases, atributos, operaciones, multiplicidades y tipos de asociación, articulando la transición entre el análisis abstracto y la arquitectura de código en la programación orientada a objetos.
 
 # Imagen del Diagrama de clases con sus atributos
-<img width="2553" height="1644" alt="Diadrama" src="https://github.com/user-attachments/assets/65a6aa0f-7928-439d-b97b-a532045acfd0" />
+<img width="1600" height="1030" alt="Diagrama de clases" src="https://github.com/user-attachments/assets/fc7aabd4-8512-4587-9cc4-de5afff51998" />
 
 ## Relaciones implementadas
 
