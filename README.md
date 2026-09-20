@@ -16,7 +16,7 @@ Un diagrama de clases UML constituye el modelo estructural de un sistema inform�
 
 Implementación en Java del diagrama de clases UML diseñado en la Actividad 1
 (ver `diagrama.puml` / `Diadrama.PNG` en el repositorio
-[Diagrama_Sistema_Biblioteca](https://github.com/mariaalvarez82-wq/Diagrama_Sistema_Biblioteca)),
+[Diagrama_Sistema_Biblioteca](https://github.com/sebastianlopez2-lgtm/Diagrama_Sistema_Biblioteca/edit/main/README.md)),
 aplicando los principios de la Programación Orientada a Objetos y buenas
 prácticas de diseño de software.
 
@@ -103,6 +103,3 @@ java -cp bin com.biblioteca.app.Main
    espera un `Libro`, se puede usar un `LibroDigital` o un `LibroFisico`
    sin romper el comportamiento del programa (ver el recorrido polimórfico
    en `Main.catalogo`); lo mismo aplica para `Usuario` con sus subclases.
-4. **ISP (Interface Segregation Principle)** — la interfaz `Prestable` es
-   pequeña y específica (`prestar`, `devolver`, `isDisponible`), en vez de
-   forzar a `Libro` a implementar métodos que no necesita.
